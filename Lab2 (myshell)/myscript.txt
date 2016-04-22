@@ -1,0 +1,9 @@
+echo "Running script with myshell"
+
+pwd #this comment should be ignored
+
+#this should also be good
+
+ls -l
+
+echo "end of script"

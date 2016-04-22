@@ -1,0 +1,38 @@
+#!/bin/bash
+
+echo "This is the source file to be used" > source.txt
+echo "This is an existing file to be overwritten" > existing.txt
+
+echo "Test case 1: destination file does not exist"
+if mycp source.txt source.txt.bak;
+then
+   echo "Using diff command to see if two files are same" 
+   diff source.txt source.txt.bak
+else
+   echo "Something went wrong";
+fi
+
+echo "Test case 2: destination file already exist"
+if mycp source.txt existing.txt;
+then 
+   echo "Using diff command to see if two files are same" 
+   diff source.txt existing.txt 
+else
+   echo "something went wrong"
+fi
+
+echo "Test case 3: with no parameter (should copy standard input to standard output)"
+mycp 
+
+echo "Test case 4: with one parameter (should copy standard input to the given file)"
+mycp destination
+
+echo "Test case 5: source file does not exist"
+if mycp no_existing_file destination_file;
+then
+   echo "Using diff to compare two files"
+   diff no_existing_file destination_file
+else
+   echo "Something went wrong"
+fi
+
